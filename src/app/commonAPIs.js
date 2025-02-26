@@ -89,7 +89,7 @@ export const getPropertiesWithWasteCollection = async (StartDate, EndDate) => {
 
 export const getProperties = async () => {
   try {
-    const user_details = getUserData(); // Assuming you have a function to fetch user details
+    const user_details = getUserData(); 
 
     const response = await callAPI("property/getProperties", {
       StateID: user_details?.StateID ?? 1,
@@ -104,3 +104,38 @@ export const getProperties = async () => {
     throw error;
   }
 };
+
+export const getWasteCollectionData = async () => {
+  try {
+    const user_details = getUserData();
+    const response = await callAPI("wasteCollection/getWasteCollectionData", {
+      StateID: user_details?.StateID ?? 1,
+      DistrictID: user_details?.DistrictID ?? 0,
+      BlockID: user_details?.BlockID ?? 0,
+      GPID: user_details?.GPID ?? 0,
+      WasteType: "Non-Segregated",
+    });
+    return response;
+  } catch (error) {
+    console.error("Error fetching waste collection data:", error);
+    throw error; 
+  }
+};
+
+export const getWasteCollectionDataNonSegregated = async () => {
+  try {
+    const user_details = getUserData();
+    const response = await callAPI("wasteCollection/getWasteCollectionData", {
+      StateID: user_details?.StateID ?? 1,
+      DistrictID: user_details?.DistrictID ?? 0,
+      BlockID: user_details?.BlockID ?? 0,
+      GPID: user_details?.GPID ?? 0,
+      WasteType: "Segregated",
+    });
+    return response;
+  } catch (error) {
+    console.error("Error fetching waste collection data:", error);
+    throw error; 
+  }
+};
+

@@ -70,7 +70,7 @@ export default function LoginPage() {
         const { UserTypeID } = data.data;
 
         const jsonData = JSON.stringify(data?.data);
-        const encodedData = window.btoa(encodeURIComponent(jsonData));
+        const encodedData = btoa(encodeURIComponent(jsonData));
         Cookies.save("userData", encodedData, { path: "/", maxAge: 3 * 60 * 60 });
         router.push('/dashboard');
 
