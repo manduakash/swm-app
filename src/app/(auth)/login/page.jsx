@@ -8,7 +8,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import backgroundImage from "../../../../assets/login.jpg";
+import backgroundImage from "@/assets/login.jpg";
 import Cookies from "react-cookies";
 
 export default function LoginPage() {
@@ -70,7 +70,7 @@ export default function LoginPage() {
         const { UserTypeID } = data.data;
 
         const jsonData = JSON.stringify(data?.data);
-        const encodedData = btoa(encodeURIComponent(jsonData));
+        const encodedData = window.btoa(encodeURIComponent(jsonData));
         Cookies.save("userData", encodedData, { path: "/", maxAge: 3 * 60 * 60 });
         router.push('/dashboard');
 

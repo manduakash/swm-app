@@ -13,7 +13,7 @@ import {
 import { LogOut, Recycle, User } from "lucide-react"
 import { Separator } from "./ui/separator"
 import Image from "next/image"
-import logo from "@/assets/images/logo.svg";
+import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   return (
